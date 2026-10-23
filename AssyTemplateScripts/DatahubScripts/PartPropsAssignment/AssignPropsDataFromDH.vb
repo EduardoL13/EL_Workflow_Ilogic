@@ -92,13 +92,15 @@ End Function
 
 Sub setPropertiesAndMat(assembComp As AssemblyDocument, file As String, tab As String, lastValue As Integer, headerCols As Dictionary(Of String, String)) 
 
-	' Column letters resolved from the headers in row 1
+	' Column letters resolved from the headers in row 1 ADD PROPERTIES HERE IF REQUIRED THEN ADD PROPERTIES IN TRY IN LINES BELOW 171
 	Dim colPartNo As String = headerCols("PART NO")
 	Dim colStockNumber As String = headerCols("STOCK NUMBER")
 	Dim colDescription As String = headerCols("DESCRIPTION")
 	Dim colBOMprop As String = headerCols("BOM PROP")
 	Dim colMaterial As String = headerCols("MATERIAL INV")
 	Dim colFinish As String = headerCols("FINISH")
+	Dim colStockMaterial As String = headerCols("STOCK MATERIAL")
+
 	Dim colPartID As String = ""
 	If headerCols.ContainsKey("PART ID") Then colPartID = headerCols("PART ID") ' Optional, currently not assigned
 	
@@ -172,6 +174,7 @@ Sub setPropertiesAndMat(assembComp As AssemblyDocument, file As String, tab As S
 							iProperties.Expression(nameToCompare & ".ipt", "Project", "Description") = GoExcel.CellValue(file, tab, colDescription & rowCounter)
 							iProperties.Expression(nameToCompare & ".ipt", "Custom", "Finish") = GoExcel.CellValue(file, tab, colFinish & rowCounter)
 							iProperties.Expression(nameToCompare & ".ipt", "Custom", "BOM Prop") = GoExcel.CellValue(file, tab, colBOMprop & rowCounter)
+							iProperties.Expression(nameToCompare & ".ipt", "Custom", "Stock Material") = GoExcel.CellValue(file, tab, colStockMaterial & rowCounter)					
 							iProperties.Material(nameToCompare & ".ipt") = GoExcel.CellValue(file, tab, colMaterial & rowCounter)
 						Catch
 							'Msgbox(nameToCompare)
