@@ -49,7 +49,7 @@ Sub Main()
         paramString = "=<pLength1>x<pLength2>x<pThk>"
     Else
         expectedNames = New String() {"pThk"}
-        paramString = "=<pThk>"
+        paramString = "=<pThk>"" thk"
     End If
 
     ' ---- 2) Export matching parameters, then create pParamString -------------
