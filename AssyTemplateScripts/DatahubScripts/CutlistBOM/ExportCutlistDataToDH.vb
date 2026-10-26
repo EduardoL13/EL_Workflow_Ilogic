@@ -150,8 +150,8 @@ Sub propsPrinter( _
         'Quantity
         GoExcel.CellValue(file, tab, partQtyColumn & currentRow) = _
             Single.Parse(currentPart.PropertySets.Item( _
-            "Design Tracking Properties").Item( _
-            "Cost Center").Value)
+            "Inventor User Defined Properties").Item( _
+            "Part Qty").Value)
 
         'Description
         GoExcel.CellValue(file, tab, partBOMPropColumn & currentRow) = _
